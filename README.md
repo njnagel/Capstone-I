@@ -41,3 +41,6 @@ Pairwise correlations show a range of correlations from negative to positive. Co
 
 The corresponding p-values reflect the probability of observing a value as extreme or more extreme, under the null hypthesis that the correlation is zero. 
 
+
+![alt text](https://github.com/njnagel/Capstone-I/blob/master/img/corrheatmapwpvalues.png)
+
