@@ -28,3 +28,5 @@ The datasets were merged on state name to produce the analytic data slab.
 Exploratory analysis of the data showed possible relationships between some of the factors, evident in the matrix of scatter plots.
 
 ![alt text](https://github.com/njnagel/Capstone-I/blob/master/img/scattermatrixreducednum.png)
+
+![alt text](https://github.com/njnagel/Capstone-I/blob/master/img/scatterreducedlarge.png)
