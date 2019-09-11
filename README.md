@@ -27,9 +27,14 @@ The datasets were merged on state name to produce the analytic data slab.
 
 Exploratory analysis of the data showed possible relationships between some of the factors, evident in the matrix of scatter plots.
 
+
 ![alt text](https://github.com/njnagel/Capstone-I/blob/master/img/scattermatrixreducednum.png)
 
-Pairwise correlations show a range of correlations from negative to positive. Correlations are presented in the heatmap.
+
+
+Pairwise correlations show a range of correlations from negative to positive. Correlations are presented in the heatmap below, with positive values in red and negative in shades of blue.
+
+
 
 ![alt text](https://github.com/njnagel/Capstone-I/blob/master/img/corrheatmapwnums.png)
 
