@@ -10,8 +10,11 @@ The datasets included:
   - Counts of different types of opioid deaths for each state 
       
       Synthetic Opioids
+      
       Natural, Semisynthetic 
+      
       Methadone 
+      
       Heroin
       
   - State populations 
@@ -22,14 +25,7 @@ The datasets included:
   
 The datasets were merged on state name to produce the analytic data slab.  
 
-  
-
-   
-
-   
-
-  
-
+ 
  
 
 ![alt text](https://github.com/njnagel/Capstone-I/blob/master/img/scattermatrixreducednum.png)
