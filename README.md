@@ -8,13 +8,19 @@ The data used for this project included multiple datasets consisting of opioid d
 
 The datasets included:
   - Counts of different types of opioid deaths for each state 
+      
+      Synthetic Opioids
+      Natural, Semisynthetic 
+      Methadone 
+      Heroin
+      
   - State populations 
   - Rates of uninsured 
   - Rates of immunization
   - Poverty rates 
   - Urban population
   
-The datasets were merged on state name.  
+The datasets were merged on state name to produce the analytic data slab.  
 
   
 
