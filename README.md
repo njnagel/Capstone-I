@@ -29,4 +29,7 @@ Exploratory analysis of the data showed possible relationships between some of t
 
 ![alt text](https://github.com/njnagel/Capstone-I/blob/master/img/scattermatrixreducednum.png)
 
+Pairwise correlations show a range of correlations from negative to positive. Correlations are presented in the heatmap.
+
+![alt text](https://github.com/njnagel/Capstone-I/blob/master/img/corrheatmapwnums.png)
 
