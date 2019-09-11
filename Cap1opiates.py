@@ -9,13 +9,13 @@ import scipy.stats as sc
 from scipy.stats import pearsonr
 
 
-state_ods = pd.read_csv('../../../../Downloads/raw_data.csv', sep = ',')
-election = pd.read_excel('../../../../Downloads/2016Election5.xlsx')
-statepops = pd.read_excel('../../../../Downloads/state_pops.xlsx')
-uninsured = pd.read_csv('../../../../Downloads/uninsuredrates.csv')
-immundat = pd.read_csv('../../../../Downloads/immun.csv')
-fpldat = pd.read_csv('../../../../Downloads/fpl.csv')
-urbandat = pd.read_excel('../../../../Downloads/urbanperc.xlsx')
+state_ods = pd.read_csv('../../../Downloads/raw_data.csv', sep = ',')
+election = pd.read_excel('../../../Downloads/2016Election5.xlsx')
+statepops = pd.read_excel('../../../Downloads/state_pops.xlsx')
+uninsured = pd.read_csv('../../../Downloads/uninsuredrates.csv')
+immundat = pd.read_csv('../../../Downloads/immun.csv')
+fpldat = pd.read_csv('../../../Downloads/fpl.csv')
+urbandat = pd.read_excel('../../../Downloads/urbanperc.xlsx')
 pd.set_option('display.max_columns', None)
 
 #OD data below certain levels can't be reported
@@ -69,9 +69,6 @@ Semimeans = analysisdata.groupby('winner')['NatSemiRate'].mean()
 Methmeans = analysisdata.groupby('winner')['MethRate'].mean()
 
 
-#print(Synthmeans)
-#print(Semimeans)
-
 print(Hermeans)
 sigtest1 = sc.ttest_ind(TrumpdataHer, ClintondataHer)
 print(sigtest1)
@@ -111,21 +108,23 @@ for x in analysisdata3.columns:
             
 
 #some plotting
-corr.style.background_gradient(cmap='coolwarm', axis = None).set_precision = 2
+#corr.style.background_gradient(cmap='coolwarm', axis = None).set_precision = 2
 
-fig, ax = plt.subplots(figsize=(10, 10))
-ax.matshow(corr)
-plt.xticks(range(len(corr.columns)), corr.columns);
-plt.yticks(range(len(corr.columns)), corr.columns);
+#fig, ax = plt.subplots(figsize=(10, 10))
+#ax.matshow(corr)
+#plt.xticks(range(len(corr.columns)), corr.columns);
+#plt.yticks(range(len(corr.columns)), corr.columns);
 
 f, ax = plt.subplots(figsize=(10, 8))
 corr = analysisdata2.corr()
-sns.heatmap(corr, mask=np.zeros_like(corr, dtype=np.bool), annot = True, cmap=sns.diverging_palette(220, 10, as_cmap=True),
-            square=True, ax=ax)
+#sns.heatmap(corr, mask=np.zeros_like(corr, dtype=np.bool), annot = True, cmap=sns.diverging_palette(220, 10, as_cmap=True),
+#            square=True, ax=ax)
 
-#plt.matshow(analysisdata.corr())
-#dfgraph = pd.DataFrame(np.random.randn(1000, 8),columns = ['TotalUninsRate', 'Under_200%', 'PercUrban','Perc_Immun','NatSemiRate','SynthRate', 'Methrate', 'HeroinRate'])
-sm = pd.plotting.scatter_matrix(analysisdata2, alpha=0.2, figsize=(6, 6))
+
+sns.heatmap(df_p, mask=np.zeros_like(df_p, dtype=np.bool), annot = True, annot_kws = {'size' : 8}, cmap=sns.diverging_palette(220, 10, as_cmap=True),
+            square=True, ax=ax)            
+
+sm = pd.plotting.scatter_matrix(analysisdata2, alpha=0.2, figsize=(60, 60))
 #Change label rotation
 [s.xaxis.label.set_rotation(45) for s in sm.reshape(-1)]
 [s.yaxis.label.set_rotation(0) for s in sm.reshape(-1)]
