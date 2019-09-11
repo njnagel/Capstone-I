@@ -29,4 +29,4 @@ Exploratory analysis of the data showed possible relationships between some of t
 
 ![alt text](https://github.com/njnagel/Capstone-I/blob/master/img/scattermatrixreducednum.png)
 
-![alt text](https://github.com/njnagel/Capstone-I/blob/master/img/scatterreducedlarge.png)
+
