@@ -106,3 +106,5 @@ NatSemiRate           0.504202    0.513006
 SynthRate             0.628870    0.709745  
 MethRate              1.000000    0.646351  
 HeroinRate            0.646351    1.000000
+
+![alt text](https://github.com/njnagel/Capstone-I/blob/master/img/scattermatrixreducednum.png)
