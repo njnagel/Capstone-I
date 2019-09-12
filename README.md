@@ -26,6 +26,10 @@ The datasets included:
   
 The datasets were merged on state name to produce the analytic data slab.  
 
+Initial descriptives were performed on the data, with distirbutions of the measures below:
+
+![alt text](https://github.com/njnagel/Capstone-I/blob/master/img/vardists.png)
+
 Exploratory analysis of the data showed possible relationships between some of the factors, evident in the matrix of scatter plots.
 
 
