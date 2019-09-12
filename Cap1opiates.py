@@ -16,7 +16,9 @@ uninsured = pd.read_csv('../../../Downloads/uninsuredrates.csv')
 immundat = pd.read_csv('../../../Downloads/immun.csv')
 fpldat = pd.read_csv('../../../Downloads/fpl.csv')
 urbandat = pd.read_excel('../../../Downloads/urbanperc.xlsx')
-pd.set_option('display.max_columns', None)
+pd.set_option('display.max_columns',None)
+pd.set_option('expand_frame_repr', True)
+pd.set_option('large_repr', 'truncate')
 
 #OD data below certain levels can't be reported
 state_ods = state_ods.replace('NSD', 0)
@@ -60,15 +62,26 @@ TrumpdataSynth = analysisdata.loc[analysisdata['winner'] == 'T'].dropna()['Synth
 ClintondataSynth = analysisdata.loc[analysisdata['winner'] == 'C'].dropna()['SynthRate']
 TrumpdataNatsemi = analysisdata.loc[analysisdata['winner'] == 'T'].dropna()['NatSemiRate']
 ClintondataNatsemi = analysisdata.loc[analysisdata['winner'] == 'C'].dropna()['NatSemiRate']
-
-
+#measures to see if there are differences in populations
+TrumpdataUnins = analysisdata.loc[analysisdata['winner'] == 'T'].dropna()['TotalUninsRate']
+ClintondataUnins = analysisdata.loc[analysisdata['winner'] == 'C'].dropna()['TotalUninsRate']
+TrumpdataFPL = analysisdata.loc[analysisdata['winner'] == 'T'].dropna()['Under_200%']
+ClintondataFPL = analysisdata.loc[analysisdata['winner'] == 'C'].dropna()['Under_200%']
+TrumpdataUrban = analysisdata.loc[analysisdata['winner'] == 'T'].dropna()['PercUrban']
+ClintondataUrban = analysisdata.loc[analysisdata['winner'] == 'C'].dropna()['PercUrban']
+TrumpdataImmun = analysisdata.loc[analysisdata['winner'] == 'T'].dropna()['Perc_Immun']
+ClintondataImmun = analysisdata.loc[analysisdata['winner'] == 'C'].dropna()['Perc_Immun']
 #Get means 
 Hermeans = analysisdata.groupby('winner')['HeroinRate'].mean()
 Synthmeans = analysisdata.groupby('winner')['SynthRate'].mean()
 Semimeans = analysisdata.groupby('winner')['NatSemiRate'].mean()
 Methmeans = analysisdata.groupby('winner')['MethRate'].mean()
+Uninsmeans = analysisdata.groupby('winner')['TotalUninsRate'].mean()
+FPLmeans = analysisdata.groupby('winner')['Under_200%'].mean()
+Urbanmeans = analysisdata.groupby('winner')['PercUrban'].mean()
+Immunmeans = analysisdata.groupby('winner')['Perc_Immun'].mean()
 
-
+#test for differences in opiate deaths
 print(Hermeans)
 sigtest1 = sc.ttest_ind(TrumpdataHer, ClintondataHer)
 print(sigtest1)
@@ -82,6 +95,20 @@ print(Semimeans)
 sigtest4 = sc.ttest_ind(TrumpdataNatsemi, ClintondataNatsemi)
 print(sigtest4)
 
+#test for differences in populations
+print(Uninsmeans)
+sigtest5 = sc.ttest_ind(TrumpdataUnins, ClintondataUnins)
+print(sigtest5)
+print(FPLmeans)
+sigtest6 = sc.ttest_ind(TrumpdataFPL, ClintondataFPL)
+print(sigtest6)
+print(Urbanmeans)  
+sigtest7 = sc.ttest_ind(TrumpdataUrban, ClintondataUrban) 
+print(sigtest7)
+print(Immunmeans)
+sigtest8 = sc.ttest_ind(TrumpdataImmun, ClintondataImmun)
+print(sigtest8)
+
 
 
 analysisdata2 = analysisdata[['winner', 'HeroinRate','SynthRate','NatSemiRate','MethRate', 'TotalUninsRate','Under_200%','PercUrban','Perc_Immun']].copy()
@@ -91,7 +118,7 @@ Clintondata = analysisdata2.loc[analysisdata2['winner'] == 'C']
 
 
 corr = analysisdata2.corr()
-#print(analysisdata2.corr())
+
 
 #get pvalues for correlations
    
@@ -117,6 +144,7 @@ for x in analysisdata3.columns:
 
 f, ax = plt.subplots(figsize=(10, 8))
 corr = analysisdata2.corr()
+#print(corr)
 #sns.heatmap(corr, mask=np.zeros_like(corr, dtype=np.bool), annot = True, cmap=sns.diverging_palette(220, 10, as_cmap=True),
 #            square=True, ax=ax)
 
@@ -124,7 +152,7 @@ corr = analysisdata2.corr()
 sns.heatmap(df_p, mask=np.zeros_like(df_p, dtype=np.bool), annot = True, annot_kws = {'size' : 8}, cmap=sns.diverging_palette(220, 10, as_cmap=True),
             square=True, ax=ax)            
 
-sm = pd.plotting.scatter_matrix(analysisdata2, alpha=0.2, figsize=(60, 60))
+sm = pd.plotting.scatter_matrix(analysisdata2, alpha=0.2, figsize=(20, 20))
 #Change label rotation
 [s.xaxis.label.set_rotation(45) for s in sm.reshape(-1)]
 [s.yaxis.label.set_rotation(0) for s in sm.reshape(-1)]
@@ -137,11 +165,13 @@ sm = pd.plotting.scatter_matrix(analysisdata2, alpha=0.2, figsize=(60, 60))
 [s.set_yticks(()) for s in sm.reshape(-1)]
 
 
-plt.show()
+#plt.show()
 
 #engine = create_engine('postgresql://'+os.environ['POSTGRESQL_USER']+':'+os.environ['POSTGRESQL_PASSWORD']+'@'+os.environ['POSTGRESQL_HOST_IP']+':'+os.environ['POSTGRESQL_PORT']+'/'+os.environ['POSTGRESQL_DATABASE'],echo=False)
-#engine = create_engine('postgresql+psycopg2://njnagel: password@0.0.0.0:8881/opiatesanalysis')
-#analysisdata.to_sql(name='Opiates', con=engine, if_exists = 'replace', index=False)
+engine = create_engine('postgresql+psycopg2://njnagel:password@localhost:5432')
+#engine = create_engine('postgresql+psycopg2://')
+analysisdata2.to_sql(name='Opiates', con=engine, if_exists = 'replace', index=False)
 
-#calculate_pvalues(analysisdata2)
+#hist = analysisdata3.hist(bins = 50)
+#print(hist)
        
