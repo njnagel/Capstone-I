@@ -129,6 +129,8 @@ Question: Do the popoulations that voted for each of the candidates differ on so
   
   Alternative Hypothesis: Uninsured Rates do differ between the two groups
   
+  alpha = .05? NO! multiple comparisons, so alpha = .05/4 = .0125
+  
   Test to use - t-test for two samples
   
   Test statistic = 3.92, p = .00028
@@ -141,23 +143,42 @@ Question: Do the popoulations that voted for each of the candidates differ on so
   
   Alternative Hypothesis: Poverty Rates do differ between the two groups
   
+  alpha = .05? NO! multiple comparisons, so alpha = .05/4 = .0125
+  
   Test to use - t-test for two samples
   
   Test statistic = 4.70, p = .000022
   
-  Decision: Reject the null hypothesis in favor of the alternative
+  Decision: Reject the null hypothesis in favor of the alternative  
   
+3. Urban Rate T = 81, Urban Rate C = 69
 
-winner
-C    0.236500
-T    0.300667
-Name: Under_200%, dtype: float64
-Ttest_indResult(statistic=4.698230853014776, pvalue=2.2345081254552617e-05)
-winner
-C    81.390000
-T    69.023333
-Name: PercUrban, dtype: float64
-Ttest_indResult(statistic=-3.095159479837517, pvalue=0.003278439319152115)
+  Null Hypothesis: Urban Population Rates don't differ between the two groups
+  
+  Alternative Hypothesis: Urban Population Rates do differ between the two groups
+  
+  alpha = .05? NO! multiple comparisons, so alpha = .05/4 = .0125
+  
+  Test to use - t-test for two samples
+  
+  Test statistic = 3.09, p = .0033
+  
+  Decision: Reject the null hypothesis in favor of the alternative  
+  
+4. Immunization Rate T = .30, Immunization Rate C = .24
+
+  Null Hypothesis: Immunization Rates don't differ between the two groups
+  
+  Alternative Hypothesis: Immunization Rates do differ between the two groups
+  
+  alpha = .05? NO! multiple comparisons, so alpha = .05/4 = .0125
+  
+  Test to use - t-test for two samples
+  
+  Test statistic = 2.24, p = .030
+  
+  Decision: Fail to reject the null hypothesis in favor of the alternative  
+
 winner
 C    0.7308
 T    0.7055
