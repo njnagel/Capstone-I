@@ -7,6 +7,9 @@ import os
 import seaborn as sns
 import scipy.stats as sc
 from scipy.stats import pearsonr
+import psycopg2
+from psycopg2 import sql
+from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT 
 
 
 state_ods = pd.read_csv('../../../Downloads/raw_data.csv', sep = ',')
@@ -52,6 +55,9 @@ analysisdata['HeroinRate'] = 1000*((analysisdata['Heroin'])/analysisdata['StateP
 
 #I don't know why i get the error but this solves it
 analysisdata.HeroinRate = analysisdata.HeroinRate.astype(float)
+
+#hist = analysisdata3.hist(bins = 50)
+#print(hist)
 
 #Getting measures for comparison
 TrumpdataHer = analysisdata.loc[analysisdata['winner'] == 'T'].dropna()['HeroinRate']
@@ -168,10 +174,22 @@ sm = pd.plotting.scatter_matrix(analysisdata2, alpha=0.2, figsize=(20, 20))
 #plt.show()
 
 #engine = create_engine('postgresql://'+os.environ['POSTGRESQL_USER']+':'+os.environ['POSTGRESQL_PASSWORD']+'@'+os.environ['POSTGRESQL_HOST_IP']+':'+os.environ['POSTGRESQL_PORT']+'/'+os.environ['POSTGRESQL_DATABASE'],echo=False)
-engine = create_engine('postgresql+psycopg2://njnagel:password@localhost:5432')
+#engine = create_engine("postgresql+psycopg2://njnagel:password@localhost:5432/Opiates")
 #engine = create_engine('postgresql+psycopg2://')
-analysisdata2.to_sql(name='Opiates', con=engine, if_exists = 'replace', index=False)
+#analysisdata2.to_sql(name='Opiates', con=engine, if_exists = 'replace', index=False)
 
-#hist = analysisdata3.hist(bins = 50)
-#print(hist)
+
+
+con = psycopg2.connect(dbname='postgres',
+      user=self.user_name, host='',
+      password=self.password)
+
+con.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT) # <-- ADD THIS LINE
+
+cur = con.cursor()
+
+# Use the psycopg2.sql module instead of string concatenation 
+# in order to avoid sql injection attacs.
+cur.execute(sql.SQL("CREATE DATABASE {}").format(
+        sql.Identifier(self.db_name))
        
