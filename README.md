@@ -44,3 +44,47 @@ The corresponding p-values reflect the probability of observing a value as extre
 
 ![alt text](https://github.com/njnagel/Capstone-I/blob/master/img/corrheatmapwpvalues.png)
 
+
+
+  analysisdata['winner'][i] = 'T' if analysisdata['PV_Trump'][i] > analysisdata['PV_Clinton'][i] else 'C'
+winner
+C    0.065593
+T    0.035923
+Name: HeroinRate, dtype: float64
+Ttest_indResult(statistic=-2.7372999654234773, pvalue=0.0086618666053406)
+winner
+C    0.016529
+T    0.006650
+Name: MethRate, dtype: float64
+Ttest_indResult(statistic=-4.678277417250803, pvalue=2.388806761336747e-05)
+winner
+C    0.126917
+T    0.074349
+Name: SynthRate, dtype: float64
+Ttest_indResult(statistic=-2.0847773866193666, pvalue=0.04243297966655116)
+winner
+C    0.048752
+T    0.050103
+Name: NatSemiRate, dtype: float64
+Ttest_indResult(statistic=0.18594481457428477, pvalue=0.8532716261483074)
+winner
+C    0.087500
+T    0.132667
+Name: TotalUninsRate, dtype: float64
+Ttest_indResult(statistic=3.9227585968090746, pvalue=0.0002780926479508915)
+winner
+C    0.236500
+T    0.300667
+Name: Under_200%, dtype: float64
+Ttest_indResult(statistic=4.698230853014776, pvalue=2.2345081254552617e-05)
+winner
+C    81.390000
+T    69.023333
+Name: PercUrban, dtype: float64
+Ttest_indResult(statistic=-3.095159479837517, pvalue=0.003278439319152115)
+winner
+C    0.7308
+T    0.7055
+Name: Perc_Immun, dtype: float64
+Ttest_indResult(statistic=-2.238827559482427, pvalue=0.02983878793839024)
+
