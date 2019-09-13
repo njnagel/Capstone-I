@@ -4,7 +4,7 @@
 
 The 2016 presidential election has highlighted a division in the US population. At the same time, the country faces one of the largest public health crises ever. The opioid epidemic is responsible for the longest sustained decline in U.S. life expectancy since the time of World War I and the Great Influenza. In 2017, nearly 50,000 Americans died from an opioid overdose - with an estimated 2 million more living with opioid addiction every day. This project is intended to understand more about these populations.
 
-The data used for this project included multiple datasets from 2017 consisting of opioid deaths, social indicators,electionn results, and populations.
+The data used for this project included multiple datasets from 2017 consisting of opioid deaths, social indicators,election results, and populations.
 
 The datasets included:
   - Counts of different types of opioid deaths for each state 
@@ -23,7 +23,8 @@ The datasets included:
   - Poverty rates 
   - Urban population
   - Popular vote counts for the 2016 presidential election
-    
+ 
+DATA PREP
   
 The datasets were merged on state name to produce the analytic data slab. 
 
