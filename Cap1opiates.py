@@ -7,6 +7,7 @@ import os
 import seaborn as sns
 import scipy.stats as sc
 from scipy.stats import pearsonr
+import statsmodels.stats.weightstats
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn import metrics
@@ -93,30 +94,30 @@ Immunmeans = analysisdata.groupby('winner')['Perc_Immun'].mean()
 
 #test for differences in opiate deaths
 print(Hermeans)
-sigtest1 = sc.ttest_ind(TrumpdataHer, ClintondataHer)
+sigtest1 = statsmodels.stats.weightstats.ztest(TrumpdataHer, ClintondataHer)
 print(sigtest1)
 print(Methmeans)
-sigtest2 = sc.ttest_ind(TrumpdataMeth, ClintondataMeth)
+sigtest2 = statsmodels.stats.weightstats.ztest(TrumpdataMeth, ClintondataMeth)
 print(sigtest2)
 print(Synthmeans)  
-sigtest3 = sc.ttest_ind(TrumpdataSynth, ClintondataSynth) 
+sigtest3 = statsmodels.stats.weightstats.ztest(TrumpdataSynth, ClintondataSynth) 
 print(sigtest3)
 print(Semimeans)
-sigtest4 = sc.ttest_ind(TrumpdataNatsemi, ClintondataNatsemi)
+sigtest4 = statsmodels.stats.weightstats.ztest(TrumpdataNatsemi, ClintondataNatsemi)
 print(sigtest4)
 
 #test for differences in populations
 print(Uninsmeans)
-sigtest5 = sc.ttest_ind(TrumpdataUnins, ClintondataUnins)
+sigtest5 = statsmodels.stats.weightstats.ztest(TrumpdataUnins, ClintondataUnins)
 print(sigtest5)
 print(FPLmeans)
-sigtest6 = sc.ttest_ind(TrumpdataFPL, ClintondataFPL)
+sigtest6 = statsmodels.stats.weightstats.ztest(TrumpdataFPL, ClintondataFPL)
 print(sigtest6)
 print(Urbanmeans)  
-sigtest7 = sc.ttest_ind(TrumpdataUrban, ClintondataUrban) 
+sigtest7 = statsmodels.stats.weightstats.ztest(TrumpdataUrban, ClintondataUrban) 
 print(sigtest7)
 print(Immunmeans)
-sigtest8 = sc.ttest_ind(TrumpdataImmun, ClintondataImmun)
+sigtest8 = statsmodels.stats.weightstats.ztest(TrumpdataImmun, ClintondataImmun)
 print(sigtest8)
 
 
