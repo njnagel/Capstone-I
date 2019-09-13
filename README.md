@@ -215,10 +215,14 @@ Question: Do the popoulations that voted for each of the candidates differ on so
   
   FUTURE STEPS
   
+  Complete logistic regression (when is maching learning lecture?)
+  
   Further investigation into the voting populations, identifing differentiating characteristics.
   
   Research into the relationship of uninsured rates to other factors in the population.
   
   Consider analysis of data of greater granularity, rather than using the state as the unit of analysis.
+  
+  
 
 
