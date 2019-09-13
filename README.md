@@ -199,10 +199,14 @@ Question: Do the popoulations that voted for each of the candidates differ on so
   
   LOGISTIC REGRESSION ANALYSIS
   
-  We are modeling the binary outcome of election result using 0 and 1's.
+  We are modeling the binary outcome of election result using 0 and 1's. Independent variables include the eight rates.
+  
+  The resulting Accuracy measure is .77.
   
   The confusion matrix that reflects the assignment of the training data set is below:
   
   ![alt text](https://github.com/njnagel/Capstone-I/blob/master/img/confusionmatrixlogreg.png)
+  
+  The level of accuracy is good, with 10 of 13 training cases being classified correctly.
 
 
