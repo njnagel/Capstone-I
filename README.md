@@ -212,5 +212,13 @@ Question: Do the popoulations that voted for each of the candidates differ on so
   ![alt text](https://github.com/njnagel/Capstone-I/blob/master/img/confusionmatrixlogreg.png)
   
   The level of accuracy is good, with 10 of 13 training cases being classified correctly.
+  
+  FUTURE STEPS
+  
+  Further investigation into the voting populations, identifing differentiating characteristics.
+  
+  Research into the relationship of uninsured rates to other factors in the population.
+  
+  Consider analysis of data of greater granularity, rather than using the state as the unit of analysis.
 
 
