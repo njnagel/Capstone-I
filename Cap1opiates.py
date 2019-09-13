@@ -140,7 +140,7 @@ for x in analysisdata3.columns:
         df_corr.loc[x,y] = correl[0]
         df_p.loc[x,y] = correl[1]
 #print(df_corr)
-#print(df_p)   
+print(df_p)   
 
             
 
@@ -156,7 +156,7 @@ for x in analysisdata3.columns:
 corr = analysisdata2.corr()
 #print(corr)
 #sns.heatmap(corr, mask=np.zeros_like(corr, dtype=np.bool), annot = True, cmap=sns.diverging_palette(220, 10, as_cmap=True),
-#            square=True, ax=ax)
+#           square=True, ax=ax)
 sns.set(font_scale=2)
 f, (ax1, ax2, ax3, ax4) = plt.subplots(4, figsize=(10, 8))
 sns.regplot(analysisdata.TotalUninsRate, analysisdata.HeroinRate, ax = ax1)
@@ -165,51 +165,42 @@ sns.regplot(analysisdata.TotalUninsRate, analysisdata.SynthRate, ax = ax3)
 sns.regplot(analysisdata.TotalUninsRate, analysisdata.NatSemiRate, ax = ax4)
 
 analysisdata4 = analysisdata.sort_values('HeroinRate')
-plt.rc('xtick', labelsize=6) 
-plt.rc('ytick', labelsize=6)
-fig, ax = plt.subplots(figsize=(10, 8))
-plt.barh(analysisdata4['Location'], analysisdata4['HeroinRate'])
-plt.title('Heroin Death Rate by State')
+def plot_death_rates(data, measure):
+    plt.rc('xtick', labelsize=6) 
+    plt.rc('ytick', labelsize=6)
+    fig, ax = plt.subplots(figsize=(10, 8))
+    plt.barh(data['Location'], data[measure])
+    plt.title(measure)
+    return    
+plot_death_rates(analysisdata4, 'HeroinRate')    
 
 analysisdata5 = analysisdata.sort_values('MethRate')
-plt.rc('xtick', labelsize=6) 
-plt.rc('ytick', labelsize=6)
-fig, ax = plt.subplots(figsize=(10, 8))
-plt.barh(analysisdata5['Location'], analysisdata5['MethRate'])
-plt.title('Methadone Death Rate by State')
+plot_death_rates(analysisdata5, 'MethRate')
 
 analysisdata6 = analysisdata.sort_values('SynthRate')
-plt.rc('xtick', labelsize=6) 
-plt.rc('ytick', labelsize=6)
-fig, ax = plt.subplots(figsize=(10, 8))
-plt.barh(analysisdata6['Location'], analysisdata6['SynthRate'])
-plt.title('Synthetic Opiate Death Rate by State')
+plot_death_rates(analysisdata6, 'SynthRate')
 
 analysisdata7 = analysisdata.sort_values('NatSemiRate')
-plt.rc('xtick', labelsize=6) 
-plt.rc('ytick', labelsize=6)
+plot_death_rates(analysisdata7, 'NatSemiRate')
+
 fig, ax = plt.subplots(figsize=(10, 8))
-plt.barh(analysisdata7['Location'], analysisdata7['NatSemiRate'])
-plt.title('Natural/Semisynthetic Death Rate by State')
+sns.heatmap(df_p, mask=np.zeros_like(df_p, dtype=np.bool), annot = True, annot_kws = {'size' : 8}, cmap=sns.diverging_palette(220, 10, as_cmap=True),
+            square=True, ax=ax)            
 
-
-#sns.heatmap(df_p, mask=np.zeros_like(df_p, dtype=np.bool), annot = True, annot_kws = {'size' : 8}, cmap=sns.diverging_palette(220, 10, as_cmap=True),
-#            square=True, ax=ax)            
-
-#sm = pd.plotting.scatter_matrix(analysisdata2, alpha=0.2, figsize=(20, 20))
+sm = pd.plotting.scatter_matrix(analysisdata2, alpha=0.2, figsize=(20, 20))
 #Change label rotation
-#[s.xaxis.label.set_rotation(45) for s in sm.reshape(-1)]
-#[s.yaxis.label.set_rotation(0) for s in sm.reshape(-1)]
+[s.xaxis.label.set_rotation(45) for s in sm.reshape(-1)]
+[s.yaxis.label.set_rotation(0) for s in sm.reshape(-1)]
 
 #May need to offset label when rotating to prevent overlap of figure
-#[s.get_yaxis().set_label_coords(-0.3,0.5) for s in sm.reshape(-1)]
+[s.get_yaxis().set_label_coords(-0.3,0.5) for s in sm.reshape(-1)]
 
 #Hide all ticks
-#[s.set_xticks(()) for s in sm.reshape(-1)]
-#[s.set_yticks(()) for s in sm.reshape(-1)]
+[s.set_xticks(()) for s in sm.reshape(-1)]
+[s.set_yticks(()) for s in sm.reshape(-1)]
 
 
-#plt.show()
+plt.show()
 
 #coding for logistic regression
 analysisdata['predwinner'] = 1
