@@ -196,5 +196,13 @@ Question: Do the popoulations that voted for each of the candidates differ on so
   Test statistic = 2.24, p = .025
   
   Decision: Fail to reject the null hypothesis in favor of the alternative  
+  
+  LOGISTIC REGRESSION ANALYSIS
+  
+  We are modeling the binary outcome of election result using 0 and 1's.
+  
+  The confusion matrix that reflects the assignment of the training data set is below:
+  
+  ![alt text](https://github.com/njnagel/Capstone-I/blob/master/img/confusionmatrixlogreg.png)
 
 
