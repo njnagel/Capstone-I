@@ -2,7 +2,7 @@
 
 # Capstone-I
 
-The opioid epidemic is responsible for the longest sustained decline in U.S. life expectancy since the time of World War I and the Great Influenza. In 2017, nearly 50,000 Americans died from an opioid overdose - with an estimated 2 million more living with opioid addiction every day. This project is intended to understand more about this population.
+The 2016 presidential election has highlighted a division in the US population. At the same time, the country faces one of the largest public health crises ever. The opioid epidemic is responsible for the longest sustained decline in U.S. life expectancy since the time of World War I and the Great Influenza. In 2017, nearly 50,000 Americans died from an opioid overdose - with an estimated 2 million more living with opioid addiction every day. This project is intended to understand more about these populations.
 
 The data used for this project included multiple datasets from 2017 consisting of opioid deaths, social indicators,electionn results, and populations.
 
@@ -36,6 +36,9 @@ DATA ANALYSIS
 Initial descriptives were performed on the data, with distirbutions of the measures below:
 
 ![alt text](https://github.com/njnagel/Capstone-I/blob/master/img/vardists.png)
+
+The opiate overdose death rates for all states are presented separately.
+![alt text] (
 
 Exploratory analysis of the data showed possible relationships between some of the factors, evident in the matrix of scatter plots.
 
