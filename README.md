@@ -38,6 +38,7 @@ Initial descriptives were performed on the data, with distirbutions of the measu
 
 ![alt text](https://github.com/njnagel/Capstone-I/blob/master/img/vardists.png)
 
+
 The opiate overdose death rates for all states are presented separately.
 
 ![alt text](https://github.com/njnagel/Capstone-I/blob/master/img/HeroinbyState.png)
@@ -47,6 +48,7 @@ The opiate overdose death rates for all states are presented separately.
 ![alt text](https://github.com/njnagel/Capstone-I/blob/master/img/SynthbyState.png)
 
 ![alt text](https://github.com/njnagel/Capstone-I/blob/master/img/NatSemibyState.png)
+
 
 Exploratory analysis of the data showed possible relationships between some of the factors, evident in the matrix of scatter plots.
 
@@ -67,6 +69,7 @@ The corresponding p-values reflect the probability of observing a value as extre
 
 
 ![alt text](https://github.com/njnagel/Capstone-I/blob/master/img/corrheatmapwpvalues.png)
+
 
 The figure shows interesting results related to Uninsured Rate, with significant negative correlations. 
 
