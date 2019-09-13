@@ -38,7 +38,14 @@ Initial descriptives were performed on the data, with distirbutions of the measu
 ![alt text](https://github.com/njnagel/Capstone-I/blob/master/img/vardists.png)
 
 The opiate overdose death rates for all states are presented separately.
-![alt text] (
+
+![alt text](https://github.com/njnagel/Capstone-I/blob/master/img/HeroinbyState.png)
+
+![alt text](https://github.com/njnagel/Capstone-I/blob/master/img/MethbyState.png)
+
+![alt text](https://github.com/njnagel/Capstone-I/blob/master/img/SynthbyState.png)
+
+![alt text](https://github.com/njnagel/Capstone-I/blob/master/img/NatSemibyState.png)
 
 Exploratory analysis of the data showed possible relationships between some of the factors, evident in the matrix of scatter plots.
 
@@ -168,7 +175,7 @@ Question: Do the popoulations that voted for each of the candidates differ on so
   
   Decision: Reject the null hypothesis in favor of the alternative  
   
-4. Immunization Rate T = .30, Immunization Rate C = .24
+4. Immunization Rate T = .71, Immunization Rate C = .73
 
   Null Hypothesis: Immunization Rates don't differ between the two groups
   
@@ -182,9 +189,4 @@ Question: Do the popoulations that voted for each of the candidates differ on so
   
   Decision: Fail to reject the null hypothesis in favor of the alternative  
 
-winner
-C    0.7308
-T    0.7055
-Name: Perc_Immun, dtype: float64
-Ttest_indResult(statistic=-2.238827559482427, pvalue=0.02983878793839024)
 
