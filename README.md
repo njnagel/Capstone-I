@@ -1,6 +1,6 @@
 
 
-# Capstone-I
+# Population Characteristics of the 2016 Presidential Voters
 
 The 2016 presidential election has highlighted a division in the US population. At the same time, the country faces one of the largest public health crises ever. The opioid epidemic is responsible for the longest sustained decline in U.S. life expectancy since the time of World War I and the Great Influenza. In 2017, nearly 50,000 Americans died from an opioid overdose - with an estimated 2 million more living with opioid addiction every day. This project is intended to understand more about these populations.
 
