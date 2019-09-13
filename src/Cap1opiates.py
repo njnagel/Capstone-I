@@ -7,6 +7,7 @@ import os
 import seaborn as sns
 import scipy.stats as sc
 from scipy.stats import pearsonr
+import statsmodels.stats.weightstats
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn import metrics
@@ -16,13 +17,13 @@ from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 from sklearn.linear_model import LogisticRegression as logistic
 
 
-state_ods = pd.read_csv('../../../Downloads/raw_data.csv', sep = ',')
-election = pd.read_excel('../../../Downloads/2016Election5.xlsx')
-statepops = pd.read_excel('../../../Downloads/state_pops.xlsx')
-uninsured = pd.read_csv('../../../Downloads/uninsuredrates.csv')
-immundat = pd.read_csv('../../../Downloads/immun.csv')
-fpldat = pd.read_csv('../../../Downloads/fpl.csv')
-urbandat = pd.read_excel('../../../Downloads/urbanperc.xlsx')
+state_ods = pd.read_csv('../../../../Downloads/raw_data.csv', sep = ',')
+election = pd.read_excel('../../../../Downloads/2016Election5.xlsx')
+statepops = pd.read_excel('../../../../Downloads/state_pops.xlsx')
+uninsured = pd.read_csv('../../../../Downloads/uninsuredrates.csv')
+immundat = pd.read_csv('../../../../Downloads/immun.csv')
+fpldat = pd.read_csv('../../../../Downloads/fpl.csv')
+urbandat = pd.read_excel('../../../../Downloads/urbanperc.xlsx')
 pd.set_option('display.max_columns',None)
 pd.set_option('expand_frame_repr', True)
 pd.set_option('large_repr', 'truncate')
@@ -121,8 +122,6 @@ print(sigtest8)
 
 
 
-
-
 analysisdata2 = analysisdata[['winner', 'HeroinRate','SynthRate','NatSemiRate','MethRate', 'TotalUninsRate','Under_200%','PercUrban','Perc_Immun']].copy()
 analysisdata3 = analysisdata2[['HeroinRate','SynthRate','NatSemiRate','MethRate', 'TotalUninsRate','Under_200%','PercUrban','Perc_Immun']].copy()
 Trumpdata = analysisdata2.loc[analysisdata2['winner'] == 'T']
@@ -142,7 +141,7 @@ for x in analysisdata3.columns:
         df_corr.loc[x,y] = correl[0]
         df_p.loc[x,y] = correl[1]
 #print(df_corr)
-#print(df_p)   
+print(df_p)   
 
             
 
@@ -158,13 +157,33 @@ for x in analysisdata3.columns:
 corr = analysisdata2.corr()
 #print(corr)
 #sns.heatmap(corr, mask=np.zeros_like(corr, dtype=np.bool), annot = True, cmap=sns.diverging_palette(220, 10, as_cmap=True),
-#            square=True, ax=ax)
-sns.set(font_scale=2)
+#           square=True, ax=ax)
+analysisdata['predwinner'] = 1
+j = 0
+for item in analysisdata['winner']:
+    if analysisdata['winner'][j] == 'T':
+        analysisdata['predwinner'][j] = 0 
+    j = j + 1 
+
 f, (ax1, ax2, ax3, ax4) = plt.subplots(4, figsize=(10, 8))
-sns.regplot(analysisdata.TotalUninsRate, analysisdata.HeroinRate, ax = ax1)
-sns.regplot(analysisdata.TotalUninsRate, analysisdata.MethRate, ax = ax2)
-sns.regplot(analysisdata.TotalUninsRate, analysisdata.SynthRate, ax = ax3)
-sns.regplot(analysisdata.TotalUninsRate, analysisdata.NatSemiRate, ax = ax4)
+sns.set(font_scale=4)
+b = sns.regplot(analysisdata.TotalUninsRate, analysisdata.HeroinRate, ax = ax1)
+b.axes.set_title("Death Rates by Uninsured Rate",fontsize=10)
+b.set_xlabel("Uninsured Rate",fontsize=12)
+b.set_ylabel("Heroin Rate",fontsize=12)
+b.tick_params(labelsize=5)
+c = sns.regplot(analysisdata.TotalUninsRate, analysisdata.MethRate, ax = ax2)
+c.set_xlabel("Uninsured Rate",fontsize=12)
+c.set_ylabel("Methadone Rate",fontsize=12)
+c.tick_params(labelsize=5)
+d = sns.regplot(analysisdata.TotalUninsRate, analysisdata.SynthRate, ax = ax3)
+d.set_xlabel("Uninsured Rate",fontsize=12)
+d.set_ylabel("Synthetic Opiate Rate",fontsize=12)
+d.tick_params(labelsize=5)
+e = sns.regplot(analysisdata.TotalUninsRate, analysisdata.NatSemiRate, ax = ax4)
+e.set_xlabel("Uninsured Rate",fontsize=12)
+e.set_ylabel("Natural, SemiSynthetic Rate",fontsize=12)
+e.tick_params(labelsize=5)
 
 analysisdata4 = analysisdata.sort_values('HeroinRate')
 def plot_death_rates(data, measure):
@@ -185,24 +204,29 @@ plot_death_rates(analysisdata6, 'SynthRate')
 analysisdata7 = analysisdata.sort_values('NatSemiRate')
 plot_death_rates(analysisdata7, 'NatSemiRate')
 
+fig, ax = plt.subplots(figsize=(10, 8))
+sns.heatmap(df_p, mask=np.zeros_like(df_p, dtype=np.bool), annot = True, annot_kws = {'size' : 8}, cmap=sns.diverging_palette(220, 10, as_cmap=True),
+            square=True, ax=ax)            
 
-#sns.heatmap(df_p, mask=np.zeros_like(df_p, dtype=np.bool), annot = True, annot_kws = {'size' : 8}, cmap=sns.diverging_palette(220, 10, as_cmap=True),
-#            square=True, ax=ax)            
-
-#sm = pd.plotting.scatter_matrix(analysisdata2, alpha=0.2, figsize=(20, 20))
+sm = pd.plotting.scatter_matrix(analysisdata2, alpha=1, figsize=(10, 10))
 #Change label rotation
-#[s.xaxis.label.set_rotation(45) for s in sm.reshape(-1)]
-#[s.yaxis.label.set_rotation(0) for s in sm.reshape(-1)]
+plt.xlabel('xlabel', fontsize=6)
+plt.ylabel('ylabel', fontsize=6)
+ax.tick_params(axis = 'both', which = 'major', labelsize = 6)
+ax.tick_params(axis = 'both', which = 'minor', labelsize = 6)
+plt.tick_params(labelsize=6)
+[s.xaxis.label.set_rotation(45) for s in sm.reshape(-1)]
+[s.yaxis.label.set_rotation(0) for s in sm.reshape(-1)]
 
 #May need to offset label when rotating to prevent overlap of figure
-#[s.get_yaxis().set_label_coords(-0.3,0.5) for s in sm.reshape(-1)]
+[s.get_yaxis().set_label_coords(-0.3,0.5) for s in sm.reshape(-1)]
 
 #Hide all ticks
 #[s.set_xticks(()) for s in sm.reshape(-1)]
 #[s.set_yticks(()) for s in sm.reshape(-1)]
 
 
-#plt.show()
+plt.show()
 
 #coding for logistic regression
 analysisdata['predwinner'] = 1
