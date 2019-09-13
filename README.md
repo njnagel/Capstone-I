@@ -67,6 +67,10 @@ The corresponding p-values reflect the probability of observing a value as extre
 
 ![alt text](https://github.com/njnagel/Capstone-I/blob/master/img/corrheatmapwpvalues.png)
 
+The figure shows interesting results related to Uninsured Rate, with significant negative correlations. 
+
+![alt text](https://github.com/njnagel/Capstone-I/blob/master/img/Uninsrateopiates.png)
+
 
 HYPOTHESIS TESTING
 
