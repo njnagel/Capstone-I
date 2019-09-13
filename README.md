@@ -2,9 +2,9 @@
 
 # Capstone-I
 
-The opioid epidemic is responsible for the longest sustained decline in U.S. life expectancy since the time of World War I and the Great Influenza. In 2017, nearly 50,000 Americans died from an opioid overdose - with an estimated 2 million more living with opioid addiction every day. This project is intended to understand more about this population.
+The 2016 presidential election has highlighted a division in the US population. At the same time, the country faces one of the largest public health crises ever. The opioid epidemic is responsible for the longest sustained decline in U.S. life expectancy since the time of World War I and the Great Influenza. In 2017, nearly 50,000 Americans died from an opioid overdose - with an estimated 2 million more living with opioid addiction every day. This project is intended to understand more about these populations.
 
-The data used for this project included multiple datasets from 2017 consisting of opioid deaths, social indicators,electionn results, and populations.
+The data used for this project included multiple datasets from 2017 consisting of opioid deaths, social indicators,election results, and populations.
 
 The datasets included:
   - Counts of different types of opioid deaths for each state 
@@ -23,7 +23,8 @@ The datasets included:
   - Poverty rates 
   - Urban population
   - Popular vote counts for the 2016 presidential election
-    
+ 
+DATA PREP
   
 The datasets were merged on state name to produce the analytic data slab. 
 
@@ -36,6 +37,16 @@ DATA ANALYSIS
 Initial descriptives were performed on the data, with distirbutions of the measures below:
 
 ![alt text](https://github.com/njnagel/Capstone-I/blob/master/img/vardists.png)
+
+The opiate overdose death rates for all states are presented separately.
+
+![alt text](https://github.com/njnagel/Capstone-I/blob/master/img/HeroinbyState.png)
+
+![alt text](https://github.com/njnagel/Capstone-I/blob/master/img/MethbyState.png)
+
+![alt text](https://github.com/njnagel/Capstone-I/blob/master/img/SynthbyState.png)
+
+![alt text](https://github.com/njnagel/Capstone-I/blob/master/img/NatSemibyState.png)
 
 Exploratory analysis of the data showed possible relationships between some of the factors, evident in the matrix of scatter plots.
 
@@ -56,6 +67,10 @@ The corresponding p-values reflect the probability of observing a value as extre
 
 
 ![alt text](https://github.com/njnagel/Capstone-I/blob/master/img/corrheatmapwpvalues.png)
+
+The figure shows interesting results related to Uninsured Rate, with significant negative correlations. 
+
+![alt text](https://github.com/njnagel/Capstone-I/blob/master/img/Uninsrateopiates.png)
 
 
 HYPOTHESIS TESTING
@@ -165,7 +180,7 @@ Question: Do the popoulations that voted for each of the candidates differ on so
   
   Decision: Reject the null hypothesis in favor of the alternative  
   
-4. Immunization Rate T = .30, Immunization Rate C = .24
+4. Immunization Rate T = .71, Immunization Rate C = .73
 
   Null Hypothesis: Immunization Rates don't differ between the two groups
   
@@ -179,9 +194,4 @@ Question: Do the popoulations that voted for each of the candidates differ on so
   
   Decision: Fail to reject the null hypothesis in favor of the alternative  
 
-winner
-C    0.7308
-T    0.7055
-Name: Perc_Immun, dtype: float64
-Ttest_indResult(statistic=-2.238827559482427, pvalue=0.02983878793839024)
 
