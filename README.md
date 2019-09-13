@@ -23,13 +23,25 @@ The datasets included:
   - Poverty rates 
   - Urban population
   - Popular vote counts for the 2016 presidential election
+    
   
-The datasets were merged on state name to produce the analytic data slab.  
+The datasets were merged on state name to produce the analytic data slab. 
+
+  - States were categorized according to which presidential candidate recieved the most popular votes.
+  - Rates of overdose deaths were computed using state population totals to get a per 1000 rate
+  - Death counts under a certain numer cannot be reported per HIPAA, so those totals, identified as "not reported" used a value of zero
+
+DATA ANALYSIS
+
+Initial descriptives were performed on the data, with distirbutions of the measures below:
+
+![alt text](https://github.com/njnagel/Capstone-I/blob/master/img/vardists.png)
 
 Exploratory analysis of the data showed possible relationships between some of the factors, evident in the matrix of scatter plots.
 
 
 ![alt text](https://github.com/njnagel/Capstone-I/blob/master/img/scattermatrixreducednum.png)
+
 
 
 
@@ -46,43 +58,127 @@ The corresponding p-values reflect the probability of observing a value as extre
 ![alt text](https://github.com/njnagel/Capstone-I/blob/master/img/corrheatmapwpvalues.png)
 
 
+HYPOTHESIS TESTING
 
-  analysisdata['winner'][i] = 'T' if analysisdata['PV_Trump'][i] > analysisdata['PV_Clinton'][i] else 'C'
-winner
-C    0.065593
-T    0.035923
-Name: HeroinRate, dtype: float64
-Ttest_indResult(statistic=-2.7372999654234773, pvalue=0.0086618666053406)
-winner
-C    0.016529
-T    0.006650
-Name: MethRate, dtype: float64
-Ttest_indResult(statistic=-4.678277417250803, pvalue=2.388806761336747e-05)
-winner
-C    0.126917
-T    0.074349
-Name: SynthRate, dtype: float64
-Ttest_indResult(statistic=-2.0847773866193666, pvalue=0.04243297966655116)
-winner
-C    0.048752
-T    0.050103
-Name: NatSemiRate, dtype: float64
-Ttest_indResult(statistic=0.18594481457428477, pvalue=0.8532716261483074)
-winner
-C    0.087500
-T    0.132667
-Name: TotalUninsRate, dtype: float64
-Ttest_indResult(statistic=3.9227585968090746, pvalue=0.0002780926479508915)
-winner
-C    0.236500
-T    0.300667
-Name: Under_200%, dtype: float64
-Ttest_indResult(statistic=4.698230853014776, pvalue=2.2345081254552617e-05)
-winner
-C    81.390000
-T    69.023333
-Name: PercUrban, dtype: float64
-Ttest_indResult(statistic=-3.095159479837517, pvalue=0.003278439319152115)
+Question: Do the populations that voted for the two main candidates differ in opiate deaths?
+
+1.  Heroin Rate T = .036, Heroin Rate C = .066
+
+    Null Hypothesis: Heroin Rates of Death are equal for T voters and C voters
+    
+    Alternative Hypothesis: Heroin Rates of Death are different for the two groups
+    
+    alpha = .05? NO! multiple comparisons, so alpha = .05/4 = .0125
+    
+    Test to use - t-test for two samples
+    
+    Test statistic = 2.73, p = .0087
+    
+    Decision: reject the null hypothesis in favor of the alternative
+    
+2. Methadone Rate T = .0067, Methadone Rate C = .017
+
+
+    Null Hypothesis: Methadone Rates of Death are equal for T voters and C voters
+    
+    Alternative Hypothesis: Methadone Rates of Death are different for the two groups
+    
+    alpha = .05? NO! multiple comparisons, so alpha = .05/4 = .0125
+    
+    Test to use - t-test for two samples
+    
+    Test statistic = 4.68, p = .000024
+    
+    Decision: reject the null hypothesis in favor of the alternative
+    
+3. Synthetic Rate T = .074, Synthetic Rate C = .127    
+
+
+    Null Hypothesis: Synthetic Opioid Rates of Death are equal for T voters and C voters
+    
+    Alternative Hypothesis: Synthetic Opioid Rates of Death are different for the two groups
+    
+    alpha = .05? NO! multiple comparisons, so alpha = .05/4 = .0125
+    
+    Test to use - t-test for two samples
+    
+    Test statistic = 2.08, p = .042
+    
+    Decision: Fail to reject the null hypothesis in favor of the alternative
+    
+4. Natural, SemiSynthetic Rate T = .050, Natural, SemiSynthetic Rate C = .049 
+
+
+    Null Hypothesis: Natural, SemiSynthetic Rates of Death are equal for T voters and C voters
+    
+    Alternative Hypothesis: Natural, SemiSynthetic Rates of Death are different for the two groups
+    
+    alpha = .05? NO! multiple comparisons, so alpha = .05/4 = .0125
+    
+    Test to use - t-test for two samples
+    
+    Test statistic = .185, p = .85
+    
+    Decision: Fail to reject the null hypothesis in favor of the alternative
+  
+Question: Do the popoulations that voted for each of the candidates differ on social health indicators?
+
+1. Uninsured Rate T = .13, Uninsured Rate C = .09
+
+  Null Hypothesis: Uninsured Rates don't differ between the two groups
+  
+  Alternative Hypothesis: Uninsured Rates do differ between the two groups
+  
+  alpha = .05? NO! multiple comparisons, so alpha = .05/4 = .0125
+  
+  Test to use - t-test for two samples
+  
+  Test statistic = 3.92, p = .00028
+  
+  Decision: Reject the null hypothesis in favor of the alternative
+  
+2. Poverty Rate T = .30, Poverty Rate C = .24
+
+  Null Hypothesis: Poverty Rates don't differ between the two groups
+  
+  Alternative Hypothesis: Poverty Rates do differ between the two groups
+  
+  alpha = .05? NO! multiple comparisons, so alpha = .05/4 = .0125
+  
+  Test to use - t-test for two samples
+  
+  Test statistic = 4.70, p = .000022
+  
+  Decision: Reject the null hypothesis in favor of the alternative  
+  
+3. Urban Rate T = 81, Urban Rate C = 69
+
+  Null Hypothesis: Urban Population Rates don't differ between the two groups
+  
+  Alternative Hypothesis: Urban Population Rates do differ between the two groups
+  
+  alpha = .05? NO! multiple comparisons, so alpha = .05/4 = .0125
+  
+  Test to use - t-test for two samples
+  
+  Test statistic = 3.09, p = .0033
+  
+  Decision: Reject the null hypothesis in favor of the alternative  
+  
+4. Immunization Rate T = .30, Immunization Rate C = .24
+
+  Null Hypothesis: Immunization Rates don't differ between the two groups
+  
+  Alternative Hypothesis: Immunization Rates do differ between the two groups
+  
+  alpha = .05? NO! multiple comparisons, so alpha = .05/4 = .0125
+  
+  Test to use - t-test for two samples
+  
+  Test statistic = 2.24, p = .030
+  
+  Decision: Fail to reject the null hypothesis in favor of the alternative  
+
 winner
 C    0.7308
 T    0.7055
