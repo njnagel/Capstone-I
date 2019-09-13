@@ -93,31 +93,33 @@ Immunmeans = analysisdata.groupby('winner')['Perc_Immun'].mean()
 
 #test for differences in opiate deaths
 print(Hermeans)
-sigtest1 = sc.ttest_ind(TrumpdataHer, ClintondataHer)
+sigtest1 = statsmodels.stats.weightstats.ztest(TrumpdataHer, ClintondataHer)
 print(sigtest1)
 print(Methmeans)
-sigtest2 = sc.ttest_ind(TrumpdataMeth, ClintondataMeth)
+sigtest2 = statsmodels.stats.weightstats.ztest(TrumpdataMeth, ClintondataMeth)
 print(sigtest2)
 print(Synthmeans)  
-sigtest3 = sc.ttest_ind(TrumpdataSynth, ClintondataSynth) 
+sigtest3 = statsmodels.stats.weightstats.ztest(TrumpdataSynth, ClintondataSynth) 
 print(sigtest3)
 print(Semimeans)
-sigtest4 = sc.ttest_ind(TrumpdataNatsemi, ClintondataNatsemi)
+sigtest4 = statsmodels.stats.weightstats.ztest(TrumpdataNatsemi, ClintondataNatsemi)
 print(sigtest4)
 
 #test for differences in populations
 print(Uninsmeans)
-sigtest5 = sc.ttest_ind(TrumpdataUnins, ClintondataUnins)
+sigtest5 = statsmodels.stats.weightstats.ztest(TrumpdataUnins, ClintondataUnins)
 print(sigtest5)
 print(FPLmeans)
-sigtest6 = sc.ttest_ind(TrumpdataFPL, ClintondataFPL)
+sigtest6 = statsmodels.stats.weightstats.ztest(TrumpdataFPL, ClintondataFPL)
 print(sigtest6)
 print(Urbanmeans)  
-sigtest7 = sc.ttest_ind(TrumpdataUrban, ClintondataUrban) 
+sigtest7 = statsmodels.stats.weightstats.ztest(TrumpdataUrban, ClintondataUrban) 
 print(sigtest7)
 print(Immunmeans)
-sigtest8 = sc.ttest_ind(TrumpdataImmun, ClintondataImmun)
+sigtest8 = statsmodels.stats.weightstats.ztest(TrumpdataImmun, ClintondataImmun)
 print(sigtest8)
+
+
 
 
 
@@ -165,32 +167,23 @@ sns.regplot(analysisdata.TotalUninsRate, analysisdata.SynthRate, ax = ax3)
 sns.regplot(analysisdata.TotalUninsRate, analysisdata.NatSemiRate, ax = ax4)
 
 analysisdata4 = analysisdata.sort_values('HeroinRate')
-plt.rc('xtick', labelsize=6) 
-plt.rc('ytick', labelsize=6)
-fig, ax = plt.subplots(figsize=(10, 8))
-plt.barh(analysisdata4['Location'], analysisdata4['HeroinRate'])
-plt.title('Heroin Death Rate by State')
+def plot_death_rates(data, measure):
+    plt.rc('xtick', labelsize=6) 
+    plt.rc('ytick', labelsize=6)
+    fig, ax = plt.subplots(figsize=(10, 8))
+    plt.barh(data['Location'], data[measure])
+    plt.title(measure)
+    return    
+plot_death_rates(analysisdata4, 'HeroinRate')    
 
 analysisdata5 = analysisdata.sort_values('MethRate')
-plt.rc('xtick', labelsize=6) 
-plt.rc('ytick', labelsize=6)
-fig, ax = plt.subplots(figsize=(10, 8))
-plt.barh(analysisdata5['Location'], analysisdata5['MethRate'])
-plt.title('Methadone Death Rate by State')
+plot_death_rates(analysisdata5, 'MethRate')
 
 analysisdata6 = analysisdata.sort_values('SynthRate')
-plt.rc('xtick', labelsize=6) 
-plt.rc('ytick', labelsize=6)
-fig, ax = plt.subplots(figsize=(10, 8))
-plt.barh(analysisdata6['Location'], analysisdata6['SynthRate'])
-plt.title('Synthetic Opiate Death Rate by State')
+plot_death_rates(analysisdata6, 'SynthRate')
 
 analysisdata7 = analysisdata.sort_values('NatSemiRate')
-plt.rc('xtick', labelsize=6) 
-plt.rc('ytick', labelsize=6)
-fig, ax = plt.subplots(figsize=(10, 8))
-plt.barh(analysisdata7['Location'], analysisdata7['NatSemiRate'])
-plt.title('Natural/Semisynthetic Death Rate by State')
+plot_death_rates(analysisdata7, 'NatSemiRate')
 
 
 #sns.heatmap(df_p, mask=np.zeros_like(df_p, dtype=np.bool), annot = True, annot_kws = {'size' : 8}, cmap=sns.diverging_palette(220, 10, as_cmap=True),
