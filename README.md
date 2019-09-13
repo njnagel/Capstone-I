@@ -1,4 +1,7 @@
-
+   ![alt text](https://github.com/njnagel/Capstone-I/blob/master/img/485px-2016_Presidential_Election_by_Vote_Distribution_Among_States.svg.png)
+   
+   
+   
 
 # Population Characteristics of the 2016 Presidential Voters
 
