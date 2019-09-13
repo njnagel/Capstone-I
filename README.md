@@ -77,7 +77,7 @@ HYPOTHESIS TESTING
 
 Question: Do the populations that voted for the two main candidates differ in opiate deaths?
 
-1.  Heroin Rate T = .036, Heroin Rate C = .066
+1.  Heroin Rate T = .036, Heroin Rate C = .0062
 
     Null Hypothesis: Heroin Rates of Death are equal for T voters and C voters
     
@@ -85,7 +85,7 @@ Question: Do the populations that voted for the two main candidates differ in op
     
     alpha = .05? NO! multiple comparisons, so alpha = .05/4 = .0125
     
-    Test to use - t-test for two samples
+    Test to use - z-test for proportions
     
     Test statistic = 2.73, p = .0087
     
@@ -100,9 +100,9 @@ Question: Do the populations that voted for the two main candidates differ in op
     
     alpha = .05? NO! multiple comparisons, so alpha = .05/4 = .0125
     
-    Test to use - t-test for two samples
+    Test to use - z-test for proportions
     
-    Test statistic = 4.68, p = .000024
+    Test statistic = 4.68, p = .0000029
     
     Decision: reject the null hypothesis in favor of the alternative
     
@@ -115,9 +115,9 @@ Question: Do the populations that voted for the two main candidates differ in op
     
     alpha = .05? NO! multiple comparisons, so alpha = .05/4 = .0125
     
-    Test to use - t-test for two samples
+    Test to use - z-test for proportions
     
-    Test statistic = 2.08, p = .042
+    Test statistic = 2.08, p = .040
     
     Decision: Fail to reject the null hypothesis in favor of the alternative
     
@@ -130,7 +130,7 @@ Question: Do the populations that voted for the two main candidates differ in op
     
     alpha = .05? NO! multiple comparisons, so alpha = .05/4 = .0125
     
-    Test to use - t-test for two samples
+    Test to use - z-test for proportions
     
     Test statistic = .185, p = .85
     
@@ -146,9 +146,9 @@ Question: Do the popoulations that voted for each of the candidates differ on so
   
   alpha = .05? NO! multiple comparisons, so alpha = .05/4 = .0125
   
-  Test to use - t-test for two samples
+  Test to use - z-test for proportions
   
-  Test statistic = 3.92, p = .00028
+  Test statistic = 3.92, p = .000008
   
   Decision: Reject the null hypothesis in favor of the alternative
   
@@ -160,9 +160,9 @@ Question: Do the popoulations that voted for each of the candidates differ on so
   
   alpha = .05? NO! multiple comparisons, so alpha = .05/4 = .0125
   
-  Test to use - t-test for two samples
+  Test to use - z-test for proportions
   
-  Test statistic = 4.70, p = .000022
+  Test statistic = 4.70, p = .0000026
   
   Decision: Reject the null hypothesis in favor of the alternative  
   
@@ -174,9 +174,9 @@ Question: Do the popoulations that voted for each of the candidates differ on so
   
   alpha = .05? NO! multiple comparisons, so alpha = .05/4 = .0125
   
-  Test to use - t-test for two samples
+  Test to use - z-test for proportions
   
-  Test statistic = 3.09, p = .0033
+  Test statistic = 3.09, p = .0020
   
   Decision: Reject the null hypothesis in favor of the alternative  
   
@@ -188,9 +188,9 @@ Question: Do the popoulations that voted for each of the candidates differ on so
   
   alpha = .05? NO! multiple comparisons, so alpha = .05/4 = .0125
   
-  Test to use - t-test for two samples
+  Test to use - z-test for proportions
   
-  Test statistic = 2.24, p = .030
+  Test statistic = 2.24, p = .025
   
   Decision: Fail to reject the null hypothesis in favor of the alternative  
 
